@@ -1,0 +1,70 @@
+# Ubuntu/Debian
+
+| Version      | Suppported? |
+| :------------ | :---------: | 
+| Ubuntu 22.04      |    ✅    |          
+| Debian Bullseye   |    ✅    |
+| Ubuntu 20.04      |    ✅    |
+| Ubuntu 18.04      | Untested❔|
+
+
+## The start of the install process
+- Login Via SSH 
+- First we are gonna install NodeJS v18.15.0
+- Run `sudo apt update && sudo apt upgrade`
+- Next add the the nodejs repository run  `curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -`
+- Now that the repository is installed run `sudo apt-get install nodejs`
+- Sample output
+```
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  libfwupdplugin1
+Use 'sudo apt autoremove' to remove it.
+The following NEW packages will be installed:
+  nodejs
+0 upgraded, 1 newly installed, 0 to remove and 35 not upgraded.
+Need to get 27.7 MB of archives.
+After this operation, 184 MB of additional disk space will be used.
+Get:1 https://deb.nodesource.com/node_18.x focal/main amd64 nodejs amd64 18.0.0-deb-1nodesource1 [27.7 MB]
+Fetched 27.7 MB in 0s (64.4 MB/s)
+```
+- Now verify that its installed with `node -v`
+```
+v18.15.0
+```
+- Also check your npm version with `npm -v`
+```
+v9.5.0
+``` 
+- NodeJS is now Installed 
+## MongoDB Localhost Setup 
+- This is if you are not using MongoDB Atlas if you want to use that go to [MongoDB Atlas!](/spacebot/installation/mongodb-atlas) 
+
+## Spacebot!
+
+- Open the ftp app ex: FileZilla, and import the extracted spacebot folder to your server
+- Once completed CD into the folder Ex: I put my spacebot into the root of the user 
+```
+webserver@webserver:~$ ls -l
+total 8
+drwxrwxr-x 3 webserver webserver 4096 Apr 13 21:48 spacebotv14
+````
+My user is webserver so you see spacebotv14 there I would just run the command `cd spacebotv14`
+- Next config your .env file by running `sudo nano .env`
+
+```js filename=".env" {3} copy
+token = TOKEN # Place Token Here 
+MONGODBURL = mongodb://localhost:27017/spacebot # Place MongoDB Url Here
+(line(s) 1-2)
+```
+- Once configured run `npm i` 
+- Once npm is finished run the bot with node .
+This should be the output: 
+```
+webserver@webserver:~/spacebotv14$ node .
+Started refreshing application (/) commands.
+Successfully reloaded application (/) commands.
+Ready!
+```
+- To keep the bot running after you close the terminal run `nohup node . &` then type `exit` and it should close your ssh session

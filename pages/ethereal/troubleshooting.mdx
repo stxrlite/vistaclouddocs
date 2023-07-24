@@ -1,0 +1,54 @@
+## Toubleshooting ‼
+
+# MongoDB
+
+If you get a MondgoDB Error please check that you have your IP whitelisted in the atlas server!
+If not I havent experenced any other mongodb errors, please create a ticket and create a ticket in the discord!
+
+# Discord API Error
+
+```
+DiscordAPIError[50035]: Invalid Form Body
+application_id[NUMBER_TYPE_COERCE]: Value "111607305a759880724" is not snowflake.
+    at handleErrors (/home/container/projects/spacebotv14/node_modules/@discordjs/rest/dist/index.js:640:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async SequentialHandler.runRequest (/home/container/projects/spacebotv14/node_modules/@discordjs/rest/dist/index.js:1021:23)
+    at async SequentialHandler.queueRequest (/home/container/projects/spacebotv14/node_modules/@discordjs/rest/dist/index.js:862:14)
+    at async REST.request (/home/container/projects/spacebotv14/node_modules/@discordjs/rest/dist/index.js:1387:22)
+    at async /home/container/projects/spacebotv14/src/functions/handelCommands.js:28:17 {
+  requestBody: {
+    files: undefined,
+    json: [
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ]
+  },
+  rawError: {
+    code: 50035,
+    errors: { application_id: [Object] },
+    message: 'Invalid Form Body'
+  },
+  code: 50035,
+  status: 400,
+  method: 'PUT',
+  url: 'https://discord.com/api/v9/applications/111607305a759880724/commands'
+}
+```
+
+```js filename="/src/functions/handelCommands.js" {3} copy
+const { REST } = require("@discordjs/rest");
+const { Routes } = require('discord-api-types/v9');
+const fs = require('fs');
+
+const clientId = ''; // Change this to your Client ID found in the Discord Developer Portal
+const guildId = ''; // Change this to your guild ID
+
+(line(s) 1-6)
+```

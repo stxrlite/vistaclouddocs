@@ -1,0 +1,46 @@
+## Windows Installation
+
+#### Download and install
+
+- **NodeJS**, Specifically [NodeJS 18.15.0](https://nodejs.org/dist/v18.15.0/node-v18.15.0-x64.msi)
+
+- **(Optional if you do not want to create a mongoDB atlas server) MongoDB** Can be downloaded [Here](https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.5-signed.msi)
+
+***Download the bot and extract the bot to where you want to have it at***
+
+
+#### MongoDB Localhost
+
+- Connect to your mongodb server
+  ![sexnigga3](https://cdn.discordapp.com/attachments/1095380523603460097/1095571069269721098/image.png)
+
+- Click the plus to create a new database
+  ![sexnigga3](https://media.discordapp.net/attachments/1095380523603460097/1095571665485828176/image.png)
+- Name the databse to spacebot like how I have it here!
+  ![sexnigga3](https://media.discordapp.net/attachments/1095380523603460097/1095571570874908762/image.png?width=792&height=473)
+
+\***\*Your connection string should look like this\*\***
+
+`mongodb://127.0.0.1:27017/spacebot`
+
+#### .env Setup
+
+You should have a .env file in the root of your folder 
+
+
+```js filename=".env" {3} copy
+token = TOKEN # Place Token Here 
+MONGODBURL = mongodb://localhost:27017/spacebot # Place MongoDB Url Here
+(line 1-2)
+```
+
+Your .env file is setup
+
+#### Running the bot
+- Open the Command Prompt or Powershell
+- Cd where you extracted you bot to EX: `cd C:\Users\Administrator\Desktop\spacebotlifetime `
+- Run `npm install`
+- Run `node .`
+
+
+***CHECK [HERE!](/spacebot/configuration) FOR HELP ON HOW TO CONFIGURE YOUR SPACEBOT INSTALL***

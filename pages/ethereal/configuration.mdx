@@ -1,0 +1,101 @@
+# How To Configure Space Bot v1
+
+- You Can Change The Default Color Of Anything Just Locate The File You'd Like To Change And Find `.setColor("Blurple")` refer to [here](https://gist.github.com/thomasbnt/b6f455e2c7d743b796917fa3c205f812) for all of the available colors.
+  **Example:**
+
+```js filename="/src/index.js" {3} copy
+   const embedwelcome = new EmbedBuilder()
+     .setColor("Blurple") \\ Here is where you change it
+     .setTitle('A New Has Has Arrived!')
+     .setDescription( `> ***Welcome ${member} to the Sevrer!***`)
+     .setFooter({ text: `👋 Get cozy and enjoy :)`})
+     .setTimestamp()
+     .setAuthor({ name: `👋 Welcome to the Server!`})
+
+    if (channelID == null) return;
+ (line(s) 41-49)
+```
+
+## Setting Up Auto Role System:
+
+1. Locate **_/src/index.js_** file
+2. scroll down to line 26 or until you see `// Auto Role System //`
+3. Put your role id where it says `// Place Role ID Here`
+4. Restart Your Bot
+
+## Setting Up Reaction Role System:
+
+1. Ensure your bot is online and working
+2. In discord type `/reactrole`
+3. Provide the roles to give and channel to send it to
+
+## Setting Up Welcome Message:
+
+1. Ensure your bot is online
+2. Type in `/setchannel`
+3. Put in the channel to send it to
+4. You Can Change The Message In The **_index.js_** `DO NOT REMOVE THE > OR ${member}`
+
+## Setting Up Tickets:
+
+1. Locate The **_ticket-setup.js_**
+2. You can change the names near **_line 45_**.
+3. Here is a example of the code
+
+```js filename="\src\commands\Moderation\ticket-setup.js" {3} copy
+        const menu = new ActionRowBuilder()
+            .addComponents(
+                new StringSelectMenuBuilder()
+                    .setCustomId("select")
+                    .setMaxValues(1)
+                    .setPlaceholder("Select A Topic")
+                    .addOptions(
+                        {
+                            label: "🛠️ General Support",
+                            value: "Subject: General Support"
+                        },
+                        {
+                            label: "🛠️ Moderation Support",
+                            value: "Subject: Moderation Support"
+                        },
+                        {
+                            label: "🛠️ Server Support",
+                            value: "Subject: Server Support"
+                        },
+                        {
+                            label: "🛠️ Other",
+                            value: "Subject: Other"
+                        },
+                        {
+                            label: "Billing Tickets",
+                            value: "Subject: This is just a example"
+                        },
+                    )
+            )
+(line 37-61)
+```
+
+Yours will not look like this it will only have the Other as the last line the billing tickets is an example
+
+## How To Setup Suggestions:
+
+1. Locate the **_suggest.js_**
+2. Place your channel ID where it says `// Change To Channel ID Here`
+
+```js filename="/src/commands/Community/suggest.js" {3} copy
+ const channel = client.channels.cache.get('CHANGEME'); // Change To The Channel ID
+(line 30)
+```
+
+## Configuring your Guild for commands to work:
+
+```js filename="/src/functions/handelCommands.js" {3} copy
+const { REST } = require("@discordjs/rest");
+const { Routes } = require('discord-api-types/v9');
+const fs = require('fs');
+
+const clientId = ''; // Change this to your Client ID found in the Discord Developer Portal
+const guildId = ''; // Change this to your guild ID
+
+(line(s) 1-6)
+```
